@@ -35,13 +35,34 @@ class Matrix
 		{
 			for (int i=0;i<r;i++)
 				for (int j=0;j<c;j++)
+				{
 					x[i][j]=val;
+					val--;
+				}
+		}
+		
+		Matrix operator +(Matrix &m)
+		{
+			Matrix<T,r,c> temp;
+			
+			for(int i=0;i<r;i++)
+				for(int j=0;j<c;j++)
+				{
+					temp.x[i][j]=x[i][j]+m.x[i][j];
+				}
+			cout<<"Overload +"<<endl;
+			temp.afis();
+			return temp;
 		}
 };
 
 int main()
 {
 	Matrix<int,3,3> x;
-	x.init(8);
+	Matrix<int,3,3> y;
+	x.init(9);
+	y.init(20);
 	x.afis();
+	y.afis();
+	x+y;
 }
